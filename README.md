@@ -1,64 +1,96 @@
-passport-parse
+passport-leancloud
 ==============
 
-A passport strategy for those of you out there using Parse.com and nodejs (passport) for authentication :)
+云引擎中使用 AVUser 作为 passport 策略。
 
-See [Authenticate.me Node server](https://github.com/malikov/Authenticate.me-Node-Server) for an example of how to use the strategy
+# 如何使用
+## 安装
+### 源代码安装
+clone 到本地项目，并且放进 `node_modules` 文件夹中：
 
-## how to use
-clone this repo and place it in your node_modules folders
-				
-	git clone https://github.com/malikov/passport-parse
+```sh
+	git clone https://github.com/wujun4code/passport-leancloud
+```
 
-or Install using npm
+### 通过 npm 安装
 
-	npm install passport-parse
+```sh
+	npm install passport-leancloud
+```
 
-Include both passport and passport-parse
-
+## 编写代码
+在 `Express` 项目中的 `app.js` 编写如下代码：
+```js
+    var express = require('express');
 	var passport = require('passport');
-	var ParseStrategy = require('passport-parse');
+	var LeanCloudStrategy = require('passport-leancloud');
+```
 
+创建 `configuration` ：
 
-Create a new parseStrategy configuration
-
-	var parseStrategy = new ParseStrategy({
-		parseAppId,
-		parseJavascriptKey
+```js
+	var leancloudStrategy = new ParseStrategy({
+		appId:'{这里填写 LeanCloud AppId}'
+		appKey:'{这里填写 LeanCloud AppKey}'
 	});
+```
 
-or you could just load a parse client and pass it in the strategy
-	
-	var parse = require('parse').Parse;
-	parse.initialize(config.parse.appId,config.parse.jsKey);
+启用策略：
 
-	var parseStrategy = new ParseStrategy({parseClient: parse});
+``js
+	passport.use(leancloudStrategy);
+```
 
+配合 `Express` 使用：
 
-Then add the strategy to passport
+```js
+   var app = express();
+   app.use(passport.initialize());
+   app.use(passport.session());
+```
 
-	passport.use(parseStrategy);
+在需要验证的路由当中使用方式如下：
 
-And authenticate the user like so : 
+```js
+app.get('/login', function(req, res) {
+  res.render('login');
+});
+app.post('/login',
+  passport.authenticate('leancloud', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+  })
+);
 
-	passport.authenticate('parse',function(err, user, info) {
-	    if (err) {
-	    	return res.status(400).json({payload : {error: info}, message : info.message});
-	 	}
+// passport 必要的序列化和反序列化
+passport.serializeUser(function(user, done) {
+  console.log('serializeUser');
+  console.log(user);
+  done(null, user);
+});
 
-		if (!user) { 
-		   	return res.status(400).json({payload : {error: info}, message : info.message});
-		}
+passport.deserializeUser(function(user, done) {
+  console.log('deserializeUser');
+  done(null, user);
+});
+```
 
-		req.logIn(user, function(err) {
-			   	if (err) {
-			   		return res.status(400).json({payload : {error: err}, message : info.message});
-				}
-			 		
-				return res.json({
-			   		payload : req.user,
-			   		message : "Authentication successfull"
-			   	});
-			});
-		})(req,res);
+`login` 对应的 `view` 代码可以如下：
 
+```html
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>passport-leancloud</title>
+  </head>
+  <body>
+        <form action="/login" method="post">
+          <label>用户名：</label>
+          <input id="username" type="text" name="username" autocomplete="on" placeholder="用户名">
+          <label >密码：</label>
+          <input id="password" type="password" name="password" autocomplete="on" placeholder="密码">
+          <input type="submit" value="登陆"/>
+        </form>
+  </body>
+</html>
+```  
