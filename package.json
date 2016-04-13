@@ -1,0 +1,54 @@
+{
+  "name": "passport-leancloud",
+  "version": "0.0.1",
+  "description": "Passport Strategy for LeanCloud.cn",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha",
+    "coverage": "node ./node_modules/istanbul/lib/cli cover ./node_modules/mocha/bin/_mocha"
+  },
+  "keywords": [
+    "authentication",
+    "avuser authentication",
+    "leancloud",
+    "leancloud.cn",
+    "leanengine",
+    "passport"
+  ],
+  "homepage": "https://github.com/wujun4code/passport-leancloud",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wujun4code/passport-leancloud.git"
+  },
+  "author": {
+    "name": "Wu Jun",
+    "email": "believeyou@outlook.com",
+    "url": "https://github.com/wujun4code"
+  },
+  "license": "MIT License",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-mocha-test": "^0.10.0",
+    "chai": "^1.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "jshint-stylish": "^0.1.5",
+    "istanbul": "^0.2.7",
+    "mocha": "^1.18.2",
+    "sinon": "^1.9.1",
+    "proxyquire": "^0.6.0"
+  },
+  "dependencies": {
+    "leanengine": "^0.4.0",
+    "passport": "^0.3.0"
+  },
+  "readme": "#passport-leancloud\n \nA passport strategy for those of you out there using [LeanCloud.cn](https://www.leancloud.cn) and nodejs (passport) for authentication :)\n See [Authenticate.me Node server](https://github.com/malikov/Authenticate.me-Node-Server) for an example of how to use the strategy\n## how to use\nInstall the leanengine module \nnpm install passport-leancloud\n\n And follow the instruction at [Passport LeanCloud github repo](https://github.com/wujun4code/passport-leancloud)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/wujun4code/passport-leancloud/issues"
+  },
+  "_id": "passport-leancloud@0.0.1",
+  "_from": "passport-leancloud@~0.0.1",
+  "_resolved": "https://registry.npmjs.org/passport-leancloud/-/passport-leancloud-0.0.1.tgz"
+}
