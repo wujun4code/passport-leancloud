@@ -37,7 +37,7 @@ clone 到本地项目，并且放进 `node_modules` 文件夹中：
 
 启用策略：
 
-``js
+```js
 	passport.use(leancloudStrategy);
 ```
 
