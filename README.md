@@ -29,7 +29,7 @@ clone 到本地项目，并且放进 `node_modules` 文件夹中：
 创建 `configuration` ：
 
 ```js
-	var leancloudStrategy = new ParseStrategy({
+	var leancloudStrategy = new LeanCloudStrategy({
 		appId:'{这里填写 LeanCloud AppId}'
 		appKey:'{这里填写 LeanCloud AppKey}'
 	});

@@ -1,6 +1,6 @@
 {
   "name": "passport-leancloud",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Passport Strategy for LeanCloud.cn",
   "main": "lib/index.js",
   "scripts": {
@@ -43,12 +43,7 @@
     "leanengine": "^0.4.0",
     "passport": "^0.3.0"
   },
-  "readme": "#passport-leancloud\n \nA passport strategy for those of you out there using [LeanCloud.cn](https://www.leancloud.cn) and nodejs (passport) for authentication :)\n See [Authenticate.me Node server](https://github.com/malikov/Authenticate.me-Node-Server) for an example of how to use the strategy\n## how to use\nInstall the leanengine module \nnpm install passport-leancloud\n\n And follow the instruction at [Passport LeanCloud github repo](https://github.com/wujun4code/passport-leancloud)\n",
-  "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/wujun4code/passport-leancloud/issues"
-  },
-  "_id": "passport-leancloud@0.0.1",
-  "_from": "passport-leancloud@~0.0.1",
-  "_resolved": "https://registry.npmjs.org/passport-leancloud/-/passport-leancloud-0.0.1.tgz"
+  }
 }
